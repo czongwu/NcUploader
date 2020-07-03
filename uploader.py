@@ -4,15 +4,18 @@ from PyQt5.QtCore import QTranslator
 from PyQt5.QtWidgets import QApplication
 from Function import function
 
+
 class show_func(function):
     def __init__(self):
         function.__init__(self)
         self.setWindowTitle("NC-UpLoader")
 
+
 def translate():
     translateLoad = QTranslator()
     translateLoad.load('./res/qt_zh_CN.qm')
     return translateLoad
+
 
 if __name__ == '__main__':
     app = QApplication([])

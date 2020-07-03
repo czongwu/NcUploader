@@ -5,13 +5,14 @@ from PyQt5.QtCore import QDir
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from view import Ui_MainWindow
 
+
 class function(QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
         self.model_01 = QFileSystemModel()
-        self.model_01.setFilter(QDir.Dirs|QDir.NoDotAndDotDot)
+        self.model_01.setFilter(QDir.Dirs | QDir.NoDotAndDotDot)
         self.model_01.setRootPath('')
         self.treeView_Local.setModel(self.model_01)
         for col in range(1, 4):

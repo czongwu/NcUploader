@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -162,4 +163,3 @@ class Ui_MainWindow(object):
         self.label_CNC.setText(_translate("MainWindow", "CNC设备目录"))
         self.Local_status.setText(_translate("MainWindow", ""))
         self.CNC_status.setText(_translate("MainWindow", ""))
-
