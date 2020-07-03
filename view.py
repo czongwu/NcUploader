@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
         self.treeView_Local.setFrameShadow(QtWidgets.QFrame.Plain)
         self.treeView_Local.setObjectName("treeView_Local")
         self.verticalLayout.addWidget(self.treeView_Local)
-        self.listView_Local = QtWidgets.QListView(self.centralwidget)
+        self.listView_Local = QtWidgets.QTreeView(self.centralwidget)
         self.listView_Local.setMinimumSize(QtCore.QSize(0, 0))
         self.listView_Local.setFrameShape(QtWidgets.QFrame.Box)
         self.listView_Local.setFrameShadow(QtWidgets.QFrame.Plain)

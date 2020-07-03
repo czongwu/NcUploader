@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import sys
-
 from PyQt5.QtCore import QTranslator
 from PyQt5.QtWidgets import QApplication
 from Function import function
