@@ -15,7 +15,7 @@ class function(QMainWindow, Ui_MainWindow):
         self.model_01.setFilter(QDir.Dirs | QDir.NoDotAndDotDot)
         self.model_01.setRootPath('')
         self.treeView_Local.setModel(self.model_01)
-        for col in range(1, 4):
+        for col in range(3, 4):
             self.treeView_Local.setColumnHidden(col, True)
         self.treeView_Local.clicked.connect(self.listViewLocal)
         self.model_02 = QStandardItemModel()
