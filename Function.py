@@ -36,4 +36,4 @@ class function(QMainWindow, Ui_MainWindow):
         for got in range(len(PathData)):
             gosData = QStandardItem(PathData[got])
             PathDataName.setChild(got, gosData)
-        print('当前目录 %s 个文件' % (len(PathData)))
+        self.Local_status.setText('当前目录 %s 个文件' % (len(PathData)))

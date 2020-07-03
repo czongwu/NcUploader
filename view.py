@@ -160,6 +160,6 @@ class Ui_MainWindow(object):
         self.DeviceManageBtn.setText(_translate("MainWindow", "设备管理"))
         self.label_Local.setText(_translate("MainWindow", "本地目录:"))
         self.label_CNC.setText(_translate("MainWindow", "CNC设备目录"))
-        self.Local_status.setText(_translate("MainWindow", "TextLabel"))
-        self.CNC_status.setText(_translate("MainWindow", "TextLabel"))
+        self.Local_status.setText(_translate("MainWindow", ""))
+        self.CNC_status.setText(_translate("MainWindow", ""))
 
