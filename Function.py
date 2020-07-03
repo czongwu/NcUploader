@@ -32,7 +32,8 @@ class function(QMainWindow, Ui_MainWindow):
             if os.path.isdir(filePath + '\\' + PathDataSet[Data]) == False:
                 PathData.append(PathDataSet[Data])
             elif os.path.isdir(filePath + '\\' + PathDataSet[Data]) == True:
-                print('2')
-        for get in range(len(PathData)):
-            gosData = QStandardItem(PathData[get])
-            PathDataName.setChild(get, gosData)
+                pass
+        for got in range(len(PathData)):
+            gosData = QStandardItem(PathData[got])
+            PathDataName.setChild(got, gosData)
+        print('当前目录 %s 个文件' % (len(PathData)))
