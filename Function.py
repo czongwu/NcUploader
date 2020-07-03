@@ -7,4 +7,5 @@ class function(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
+        # /DiskA/OpenCNC/NcFiles
 
