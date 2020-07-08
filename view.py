@@ -134,7 +134,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setSpacing(3)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.CNC_ListView = QtWidgets.QListView(self.centralwidget)
+        self.CNC_ListView = QtWidgets.QTreeView(self.centralwidget)
         self.CNC_ListView.setMinimumSize(QtCore.QSize(0, 0))
         self.CNC_ListView.setFrameShape(QtWidgets.QFrame.Box)
         self.CNC_ListView.setFrameShadow(QtWidgets.QFrame.Plain)

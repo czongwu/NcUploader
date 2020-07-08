@@ -9,6 +9,7 @@ class show_func(function):
     def __init__(self):
         function.__init__(self)
         self.setWindowTitle("NC-UpLoader")
+        self.connectBtn.clicked.connect(self.clientBtn)
 
 
 def translate():

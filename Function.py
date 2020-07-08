@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QMainWindow, QFileSystemModel
 from PyQt5.QtCore import QDir
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from view import Ui_MainWindow
+from ftplib import FTP
 
 
 class function(QMainWindow, Ui_MainWindow):
@@ -20,6 +21,9 @@ class function(QMainWindow, Ui_MainWindow):
         self.treeView_Local.clicked.connect(self.listViewLocal)
         self.model_02 = QStandardItemModel()
         self.listView_Local.setModel(self.model_02)
+        self.model_03 = QFileSystemModel()
+        self.model_03.setFilter(QDir.Dirs | QDir.NoDotAndDotDot)
+        self.CNC_ListView.setModel(self.model_03)
         # /DiskA/OpenCNC/NcFiles
 
     def listViewLocal(self, Qmodelidx):
@@ -38,3 +42,18 @@ class function(QMainWindow, Ui_MainWindow):
             gosData = QStandardItem(PathData[got])
             PathDataName.setChild(got, gosData)
         self.Local_status.setText('当前目录 %s 个文件' % (len(PathData)))
+
+    def Ftp_client(self):
+        host = (self.IpAddressEdit.text()).strip()
+        ftp = FTP(host)
+        try:
+            ftp.login('', '')
+            folder = ftp.nlst('/')
+            return folder
+        except(UnicodeDecodeError):
+            pass
+
+    def clientBtn(self):
+        folder = self.Ftp_client()
+        self.model_03.setRootPath(folder)
+        print(folder)
