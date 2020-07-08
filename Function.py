@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 from PyQt5.QtWidgets import QMainWindow, QFileSystemModel
-from PyQt5.QtCore import QDir
+from PyQt5.QtCore import QDir, Qt
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from view import Ui_MainWindow
 from ftplib import FTP
@@ -18,42 +18,20 @@ class function(QMainWindow, Ui_MainWindow):
         self.treeView_Local.setModel(self.model_01)
         for col in range(3, 4):
             self.treeView_Local.setColumnHidden(col, True)
-        self.treeView_Local.clicked.connect(self.listViewLocal)
-        self.model_02 = QStandardItemModel()
-        self.listView_Local.setModel(self.model_02)
-        self.model_03 = QFileSystemModel()
-        self.model_03.setFilter(QDir.Dirs | QDir.NoDotAndDotDot)
-        self.CNC_ListView.setModel(self.model_03)
-        # /DiskA/OpenCNC/NcFiles
 
-    def listViewLocal(self, Qmodelidx):
-        self.model_02.clear()
-        PathData = []
-        filePath = self.model_01.filePath(Qmodelidx)
-        PathDataName = self.model_02.invisibleRootItem()
-        PathDataSet = os.listdir(filePath)
-        PathDataSet.sort()
-        for Data in range(len(PathDataSet)):
-            if os.path.isdir(filePath + '\\' + PathDataSet[Data]) == False:
-                PathData.append(PathDataSet[Data])
-            elif os.path.isdir(filePath + '\\' + PathDataSet[Data]) == True:
-                pass
-        for got in range(len(PathData)):
-            gosData = QStandardItem(PathData[got])
-            PathDataName.setChild(got, gosData)
-        self.Local_status.setText('当前目录 %s 个文件' % (len(PathData)))
+        # /DiskA/OpenCNC/NcFiles
 
     def Ftp_client(self):
         host = (self.IpAddressEdit.text()).strip()
         ftp = FTP(host)
         try:
             ftp.login('', '')
-            folder = ftp.nlst('/')
-            return folder
+            ftp.encoding('ascii').decode('utf-8')
+            # path = ftp.cwd('/')
+            self.CNC_status.setText('连接成功')
+            # self.model_03 = QFileSystemModel()
+            # self.model_03.setFilter(QDir.Dirs | QDir.NoDotAndDotDot)
+            # self.model_03.setRootPath(path)
+            # self.CNC_ListView.setModel(self.model_03)
         except(UnicodeDecodeError):
             pass
-
-    def clientBtn(self):
-        folder = self.Ftp_client()
-        self.model_03.setRootPath(folder)
-        print(folder)

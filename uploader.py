@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
-from PyQt5.QtCore import QTranslator
+from PyQt5.QtCore import QTranslator, Qt
 from PyQt5.QtWidgets import QApplication
 from Function import function
 
@@ -9,7 +9,7 @@ class show_func(function):
     def __init__(self):
         function.__init__(self)
         self.setWindowTitle("NC-UpLoader")
-        self.connectBtn.clicked.connect(self.clientBtn)
+        self.connectBtn.clicked.connect(self.Ftp_client)
 
 
 def translate():
