@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from treeView import TreeView
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -124,6 +125,7 @@ class Ui_MainWindow(object):
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
+        # self.treeView_Local = TreeView()
         self.treeView_Local = QtWidgets.QTreeView(self.centralwidget)
         self.treeView_Local.setMinimumSize(QtCore.QSize(0, 0))
         self.treeView_Local.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -144,7 +146,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.CNC_ListView = QtWidgets.QListView(self.centralwidget)
+        self.CNC_ListView = TreeView()
+        # self.CNC_ListView = QtWidgets.QListView(self.centralwidget)
         self.CNC_ListView.setMinimumSize(QtCore.QSize(0, 0))
         self.CNC_ListView.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.CNC_ListView.setFrameShadow(QtWidgets.QFrame.Sunken)

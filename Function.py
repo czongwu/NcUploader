@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from PyQt5.QtWidgets import QMainWindow, QFileSystemModel, QFileDialog, QMessageBox
-from PyQt5.QtCore import QDir, Qt
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QTreeWidgetItem
 from view import Ui_MainWindow
 from ftplib import FTP
 
@@ -12,31 +10,32 @@ class function(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
-        self.getcwd = os.getcwd()
         # /DiskA/OpenCNC/NcFiles
 
     def msg_box(self, msg):
         msgBox = QMessageBox()
-        msgBox.Question(self, 'NcUpLoader', msg, msgBox.Ok)
+        msgBox.question(self, 'NcUpLoader', msg, msgBox.Ok)
 
+    def Ftp_client(self, device):
+        host = device.strip()
+        ftp = FTP(host)
+        try:
+            ftp.login('', '')
+            self.CNC_status.setText('连接成功')
+            return ftp
+        except(UnicodeDecodeError):
+            pass
 
-    def choice_Files(self):
-        dir_choice = QFileDialog.getExistingDirectory(self, "选择文件夹", self.getcwd)
-        if dir_choice == '':
-            return
-        else:
-            self.LocalPath.setText(dir_choice)
+    def Ftp_Path_list(self, host):
+        ftp = self.Ftp_client(host)
+        path = ftp.nlst('/')
+        print(path)
 
-    def Ftp_client(self):
+    def btnFunc(self):
         device = self.IpAddressEdit.text()
         if device != '':
-            host = device.strip()
-            ftp = FTP(host)
-            try:
-                ftp.login('', '')
-                self.CNC_status.setText('连接成功')
-            except(UnicodeDecodeError):
-                pass
-        elif device == '':
-            self.msg_box("设备IP地址为空，请填入设备IP!")
+            self.Ftp_Path_list(device)
 
+        else:
+            msg = "设备IP地址为空，请填入设备IP地址！   "
+            self.msg_box(msg)

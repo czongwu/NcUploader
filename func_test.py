@@ -17,24 +17,24 @@ from ftplib import FTP
 #
 # # file = r'\\192.168.1.5\DiskA\OpenCNC\NcFiles'
 # # print(open(file))
-encode = ['UTF-8', 'gbk', 'GB2312', 'GB18030', 'Big5', 'HZ']
-
-def logFTP(code):
-    ftp = FTP('192.168.1.5')
-    try:
-        ftp.login()
-        ftp.encoding('ascii').decode(code)
-        ftp.cwd('/')
-        lst = ftp.nlst()
-        for s in lst:
-            print(s)
-    except(UnicodeDecodeError):
-        pass
-    finally:
-        print(code)
-        # t = input('Is this?:')
-        ftp.quit()
-
-
-for enc in encode:
-    logFTP(enc)
+# encode = ['UTF-8', 'gbk', 'GB2312', 'GB18030', 'Big5', 'HZ']
+#
+# def logFTP(code):
+#     ftp = FTP('192.168.1.5')
+#     try:
+#         ftp.login()
+#         ftp.encoding('ascii').decode(code)
+#         ftp.cwd('/')
+#         lst = ftp.nlst()
+#         for s in lst:
+#             print(s)
+#     except(UnicodeDecodeError):
+#         pass
+#     finally:
+#         print(code)
+#         # t = input('Is this?:')
+#         ftp.quit()
+#
+#
+# for enc in encode:
+#     logFTP(enc)
